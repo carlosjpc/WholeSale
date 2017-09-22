@@ -1,0 +1,58 @@
+{% extends "showroom/base_showroom.html" %}
+
+{% block Showroom %}
+<h2>Store: {{ store.Store_Name }}</h2>
+<div class="col-md-12">
+  <div class="col-md-5">
+    <div class="row">
+      <h4>web page: </h4>
+      <a href="{{store.web_page}}" target="_blank">{{store.web_page}}</a>
+      <h4>Notes:</h4>
+      <p>{{store.notes}}</p>
+      <a href="{% url 'store_update' pk=store.pk %}">Edit</a>
+    </div>
+    <hr>
+    <div class="row">
+      <h3>Address:</h3>
+        {% for address in addressList %}
+          <ul class="BasicList">
+            {% if address.Shipping_address %}
+              <li><h4>Shipping Address</h4></li>
+            {% endif %}
+            {% if address.Sample_shipping_address %}
+              <li><h4>Sample shipping Address</h4></li>
+            {% endif %}
+            <li><p>Street:<strong> {{address.Street}} | #: {{address.Dept}}</strong></p></li>
+            <li><p>Street2:<strong> {{address.Street2}}</strong></p></li>
+            <li><p>Locality:<strong> {{address.Locality}}</strong></p></li>
+            <li><p>State:<strong> {{address.State}}</strong></p></li>
+            <li><p>Country:<strong> {{address.Country}}</strong></p></li>
+            <li><p>Zip Code:<strong> {{address.Zip_Code}}</strong></p></li>
+            <li><p>Receiver:<strong> {{address.Reciever_name}}</strong></p></li>
+          </ul>
+        {% empty %}
+          <p>No address have been added for this store.</p>
+        {% endfor %}
+        <a href="">Add an address</a>
+    </div>
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+    <h3>Contacts:</h3>
+      {% for contact in contactList %}
+        <ul class="BasicList">
+          <li><h4>{{contact.role}}</h4></li>
+          <li><p>{{contact.name}}</p></li>
+          <li><p>{{contact.phone}}</p></li>
+          <li><a href="mailto:{{contact.email}}" target="_blank">{{contact.email}}</a></li>
+          <li>
+            <a href="{% url 'contact_update' pk=contact.pk %}">Edit /</a>
+            <a href="{% url 'contact_delete' pk=contact.pk %}">Delete Contact</a>
+          </li>
+        </ul>
+      {% empty %}
+        <p>No contacts have been added for this store.</p>
+      {% endfor %}
+      <a href="{% url 'store_contact_create' pk=store.pk %}">Add a contact</a>
+  </div>
+</div>
+{% endblock %}

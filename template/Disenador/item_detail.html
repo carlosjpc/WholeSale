@@ -1,0 +1,17 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+
+
+<h3>{{ item.clave }}</h3>
+<h4>{{ item.base }}</h4>
+<h4>${{ base_item.BasePrice }}</h4>
+<p>
+  <a href="">Edit</a>
+  <a href="">Delete</a>
+</p>
+<hr>
+<h4>Sizes Available:</h4>
+
+<a href="">Add a specific item</a>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+<h4>{{ Title }}</h4>
+<form action="." method="POST">
+  {{ formset.management_form }}
+  {% csrf_token %}
+  <div id="form_set">
+    {% for form in formset %}
+    <table class='attr'>
+      {{ form.as_table}}
+    </table>
+    </br>
+    {% endfor %}
+  </div>
+</br><input type="button" value="Add More {{attribute}}" id="add_more" class="flt-r">
+  </br><hr/>
+  <p><input type="submit" value="Submit" class="flt-r"></p>
+  <div id="empty_form" style="display:none">
+      <table class='eq_tabla'>
+          {{ formset.empty_form.as_table }}
+      </table>
+  </div>
+</form>
+{% endblock %}
+
+{% block javascript %}
+  <script type="text/javascript">
+  $('#add_more').click(function(){
+       var form_idx = $('#id_form-TOTAL_FORMS').val();
+       $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+       $('#form_set').append('</br>');
+       $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+  });
+  </script>
+{% endblock %}

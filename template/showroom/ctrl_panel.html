@@ -1,0 +1,54 @@
+{% extends "showroom/base_showroom.html" %}
+
+{% block Showroom %}
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+</script>
+
+</br>
+{{ chart.as_html }}
+</br>
+
+<div class="row">
+  <div class="col-sm-5">
+    <ul>
+      <h4>Recent POs:</h4>
+      {% for po in recent_pos %}
+        <li><a>{{ po }}</a></li>
+      {% empty %}
+        <p>Uupss! There are no recent POs</p>
+      {% endfor %}
+    </br>
+      <h4>View POs by:</h4>
+      <a>Seller</a>
+      <a>Designer</a>
+      <a>Seller / Designer</a>
+    </ul>
+  </div>
+  <div class="col-sm-5 col-sm-offset-1">
+    <div class="row">
+      <ul>
+        <h4>POs close to cancel:</h4>
+        {% for po in pos_close_to_cancel %}
+          <li><a>{{ po }}</a></li>
+        {% empty %}
+          <p>there are no un shipped POs close to cancel date.</p>
+        {% endfor %}
+      </ul>
+    </br>
+    </div>
+    <div class="row">
+      <ul>
+        <h4>Un Accepted POs:</h4>
+        {% for po in unaccepted_recent_pos %}
+          <li><a>{{ po }}</a></li>
+        {% empty %}
+          <p>there are no un accepted pos from the last month</br>pos of the last 3 days don't appear on this list.</p>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

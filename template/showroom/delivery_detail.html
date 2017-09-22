@@ -1,0 +1,21 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+<h1>{{ delivery.collection }}, delivery {{ delivery.number }}#</h1>
+<h3>Shipping Date: {{ delivery.shipping_date }}</h3>
+<h3>Cancel Date: {{ delivery.cancel_date }}</h3>
+</br>
+<ul class="BasicList">
+  <h4>Items included:</h4>
+  {% for item in items %}
+  <li>
+    <a class="title-link" href="{% url 'item_detail' pk=item.pk %}">{{ item.clave }}</a>
+    <h4>Base Item: {{ item.base }}</h4>
+    <p>Print: {{ item.color_or_print }} | Material: {{ item.material }} | Size Group: {{ item.size_group }} </p>
+  </li>
+  </br>
+  {% empty %}
+    <li>No items have been added to this delivery</li>
+  {% endfor %}
+</ul>
+{% endblock %}

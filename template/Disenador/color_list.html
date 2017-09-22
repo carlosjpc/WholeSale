@@ -1,0 +1,19 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+<div class="row">
+  <div class="col-md-10">
+    <h2>Color and Prints List:</h2>
+    <ul class="BasicList">
+      {% for color in colors %}
+        <li>
+          <a class="title-link" href="{% url 'color_detail' pk=color.pk %}">{{ color.color_or_print }}</a></br>
+          <a href="{% url 'color_update' pk=color.pk %}">Edit</a>
+          <a href="{% url 'color_delete' pk=color.pk %}">Delete</a>
+        </li>
+        </br>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

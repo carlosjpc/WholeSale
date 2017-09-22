@@ -1,0 +1,25 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+
+
+<h3>{{ base_item.clave }}</h3>
+<h4>{{ base_item.name }}</h4>
+<h4>${{ base_item.BasePrice }}</h4>
+<p>
+  <a href="{% url 'base_item_update' pk=base_item.pk %}">Edit</a>
+  <a href="{% url 'base_item_delete' pk=base_item.pk %}">Delete</a>
+</p>
+<hr>
+<h4>Specific items:</h4>
+{% for child_item in child_items %}
+  <a href="{% url 'item_detail' pk=child_item.pk %}">key {{ child_item.clave }}</a>
+  <p>Color / Print: {{ child_item.color_or_print }}</p>
+  <p>Material: {{ child_item.material }}</p>
+  <p>Size Group: {{ child_item.size_group }}</p>
+  </br>
+{% empty %}
+  <p>No specific items have been added for this base item.</p>
+{% endfor %}
+<a href="{% url 'item_add_mb' pk=base_item.pk %}">Add a specific item</a>
+{% endblock %}

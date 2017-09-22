@@ -1,0 +1,25 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+<div class="row">
+  <div class="col-md-10">
+    <h2>Sizes List:</h2>
+    <ul class="BasicList">
+      {% for group in groups %}
+      <h4>{{ group }}</h4>
+        {% for size in sizes %}
+          {% if size.group == group %}
+            <li>
+              <a href="">Size: {{ size.size }}</a></br>
+            </li>
+            </br>
+          {% endif %}
+        {% endfor %}
+      {% empty %}
+          <p>You havent added any size labels</p>
+          <a href="{% url 'size_chart_create' %}">Add some</a>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "showroom/base_showroom.html" %}
+
+{% block Showroom %}
+</br>
+
+<ul class="BasicList">
+  {% for designer in designers %}
+    <li>
+      {% for collection in collections %}
+        {% if forloop.first %}
+          <h3><a href="{% url 'designer_detail' pk=designer.pk %}">{{ designer }}</a></h3>
+          <a href="{% url 'designer_update' pk=designer.pk %}"> edit </a>|<a href="{% url 'designer_delete' pk=designer.pk %}"> delete</a>
+        {% endif %}
+        {% if forloop.counter0 < 5 %}
+          <ul></br>
+            {% if collection.designer == designer %}
+              <li><a href="{% url 'd_collection_detail' pk=collection.pk %}">{{ collection }}</a></li>
+              {% for delivery in deliveries %}
+                <ul>
+                  {% if delivery.collection == collection %}
+                    <li><p><a href="{% url 'd_delivery_detail' pk=delivery.pk %}">{{ delivery }} </a>{{ delivery.shipping_date }} | {{ delivery.cancel_date }}</p></li>
+                  {% endif %}
+                </ul>
+              {% endfor %}
+            {% endif %}
+            {% if forloop.counter0 == 5 %}
+              <a href="{% url 'collection_list_4D' pk=designer.pk %}">Load all</a>
+            {% endif %}
+          </ul>
+        {% endif %}
+      {% endfor %}
+    </li>
+    <hr>
+  {% endfor %}
+</ul>
+
+{% endblock %}

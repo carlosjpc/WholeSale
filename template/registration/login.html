@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block Login %}
+<div id="fondo-designer">
+  <div class="txt-c">
+    <form method="post" id="login-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" id="login-btn">Login</button>
+    </form>
+  </div>
+</div>  
+{% endblock %}

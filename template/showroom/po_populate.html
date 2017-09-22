@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block Showroom %}
+
+<form action="" method="post">
+    {{ formset.management_form }}
+    {% csrf_token %}
+    <div id="form_set">
+      {% for form in formset %}
+      <div class="po_entry row">
+        {{ form.non_field_errors }}
+        <div class="fieldWrapper col-sm-2">
+          {{ form.base_item.errors }}
+          <label for="{{ form.base_item.id_for_label }}">Base Item:</label>
+          {{ form.base_item }}
+        </div>
+        <div class="fieldWrapper col-sm-2">
+          {{ form.color_or_print.errors }}
+          <label for="{{ form.color_or_print.id_for_label }}">Color or Print:</label>
+          {{ form.color_or_print }}
+        </div>
+        <div class="fieldWrapper col-sm-2">
+          {{ form.material.errors }}
+          <label for="{{ form.material.id_for_label }}">Material:</label>
+          {{ form.material }}
+        </div>
+        <div class="fieldWrapper col-sm-5">
+          {{ form.size_group.errors }}
+          <label for="{{ form.size_group.id_for_label }}">Size Group:</label>
+          {{ form.size_group }}
+          <div class="row">
+            <div class="col-sm-2">
+              {{ form.qty_size1.errors }}
+              {{ form.qty_size1 }}
+            </div>
+            <div class="col-sm-2">
+              {{ form.qty_size2.errors }}
+              {{ form.qty_size2 }}
+            </div>
+            <div class="col-sm-2">
+              {{ form.qty_size3.errors }}
+              {{ form.qty_size3 }}
+            </div>
+            <div class="col-sm-2">
+              {{ form.qty_size4.errors }}
+              {{ form.qty_size4 }}
+            </div>
+            <div class="col-sm-2">
+              {{ form.qty_size5.errors }}
+              {{ form.qty_size5 }}
+            </div>
+          </div>
+        </div>
+      </div>
+      </br>
+      {% endfor %}
+    </div>
+  <input type="submit" value="Save" />
+</form>
+{% endblock %}
+
+
+{% block javascript %}
+  <script type="text/javascript">
+  $('#add_more').click(function(){
+       var form_idx = $('#id_form-TOTAL_FORMS').val();
+       $('#form_set').append($('#empty_form').html().replace(/__prefix__/g, form_idx));
+       $('#form_set').append('</br>');
+       $('#id_form-TOTAL_FORMS').val(parseInt(form_idx) + 1);
+  });
+  </script>
+{% endblock %}

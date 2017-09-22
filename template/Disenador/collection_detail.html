@@ -1,0 +1,24 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+
+
+<h1>{{ collection }} {{ collection.year }}</h1>
+<p>Collection Name: {{ collection.name }}</p>
+<p>Description: {{ collection.description }}</p>
+<p>
+  <a href="{% url 'collection_update' pk=collection.pk %}">Edit</a>
+  <a href="{% url 'collection_delete' pk=collection.pk %}">Delete</a>
+</p>
+<hr>
+<h4>Deliveries:</h4>
+{% for delivery in deliveries %}
+  <a href="{% url 'delivery_detail' pk=delivery.pk %}">Delivery {{ delivery.number }}#</a>
+  <p>Shipping date: {{ delivery.shipping_date }}</p>
+  <p>Cancel date: {{ delivery.cancel_date }}</p>
+  </br>
+{% empty %}
+  <p>No deliveries have been added for this collection.</p>
+{% endfor %}
+<a href="{% url 'delivery_add_mc' pk=collection.pk %}">Add a delivery</a>
+{% endblock %}

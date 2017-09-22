@@ -1,0 +1,23 @@
+{% extends "showroom/base_showroom.html" %}
+
+{% block Showroom %}
+</br>
+
+<h2>Payment Conditions List:</h2>
+<ul class="BasicList">
+  {% for payment_condition in payment_conditions %}
+    <li>
+      <h4>{{ payment_condition }}</h4>
+      <p>Credit: {{ payment_condition.credit }}</p>
+      {% if payment_condition.credit == True %}
+        <p>Days of Credit{{ payment_condition.days_of_credit }}</p>
+      {% endif %}
+      <p>Down Payment: {{ payment_condition.down_payment }}</p>
+      <a href="{% url 'payment_conditions_update' pk=payment_condition.pk %}">Edit</a> |
+      <a href="{% url 'payment_conditions_delete' pk=payment_condition.pk %}">Delete</a>
+    </li>
+    </br>
+  {% endfor %}
+</ul>
+
+{% endblock %}

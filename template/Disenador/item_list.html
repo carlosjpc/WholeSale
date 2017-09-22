@@ -1,0 +1,22 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+<div class="row">
+  <div class="col-md-10">
+    <h2>Item List:</h2>
+    <ul class="BasicList">
+      {% for item in item_list %}
+        <li>
+          <a class="title-link" href="{% url 'item_detail' pk=item.pk %}">{{ item.clave }}</a>
+          <h4>Base Item: {{ item.base }}</h4>
+          <p>Print: {{ item.color_or_print }} | Material: {{ item.material }} | Size Group: {{ item.size_group }} </p>
+          <a href="{% url 'item_update' pk=item.pk %}">Edit</a>
+          <a href="{% url 'item_delete' pk=item.pk %}">Delete</a>
+        </li>
+        </br></br>
+      {% endfor %}
+      <li><a href="{% url 'item_add' %}">Add a base item</a></li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

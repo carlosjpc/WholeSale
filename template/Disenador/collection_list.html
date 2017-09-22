@@ -1,0 +1,19 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+<div class="row">
+  <div class="col-md-10">
+    <h2>Collection List:</h2>
+    <ul class="BasicList">
+      {% for collection in collections %}
+        <li>
+          <a class="title-link" href="{% url 'collection_detail' pk=collection.pk %}">{{ collection.season }} {{ collection.year }}</a></br>
+          <a href="{% url 'collection_update' pk=collection.pk %}">Edit</a>
+          <a href="{% url 'collection_delete' pk=collection.pk %}">Delete</a>
+        </li>
+        </br>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

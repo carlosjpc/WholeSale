@@ -1,0 +1,19 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+<div class="row">
+  <div class="col-md-10">
+    <h2>Material List:</h2>
+    <ul class="BasicList">
+      {% for material in materials %}
+        <li>
+          <a class="title-link" href="{% url 'material_detail' pk=material.pk %}">{{ material.name }}</a></br>
+          <a href="{% url 'material_update' pk=material.pk %}">Edit</a>
+          <a href="{% url 'material_delete' pk=material.pk %}">Delete</a>
+        </li>
+        </br>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

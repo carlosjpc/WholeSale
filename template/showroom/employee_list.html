@@ -1,0 +1,19 @@
+{% extends "showroom/base_showroom.html" %}
+
+{% block Showroom %}
+</br>
+
+<h2>Employee List:</h2>
+<ul class="BasicList">
+  {% for employee in employies %}
+    <li>
+      <h4>Username: {{ employee }}</h4>
+      <p>Role: {{ employee.role }}</p>
+      <a href="{% url 'employee_update' pk=employee.pk %}">Edit</a> |
+      <a href="{% url 'employee_delete' pk=employee.pk %}">Delete</a>
+    </li>
+    </br>
+  {% endfor %}
+</ul>
+
+{% endblock %}

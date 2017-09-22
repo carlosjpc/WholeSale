@@ -1,0 +1,55 @@
+from django.conf.urls import url
+from django.contrib.auth import views as auth_views
+
+from ShowRoom import views
+from ShowRoom.views import (StoreCreate, StoreUpdate, StoreDelete, StoreList, ContactCreate, ContactUpdate, ContactDelete,
+                            AddressCreate, AddressUpdate, AddressDelete, DesignerList, CollectionList_4D, DeliveryList_4DC,
+                            Payment_ConditionsCreate, Payment_ConditionsList, Payment_ConditionsUpdate, Payment_ConditionsDelete,
+                            PO_formset_populate, PO_Update,
+                            DesignerList, DesignerUpdate, DesignerDelete,
+                            EmployeeList, EmployeeDelete)
+
+urlpatterns = [
+    url(r'^ctrl_panel/$', views.ctrl_panel_manager, name='ctrl_panel'),
+    url(r'^designer_add/$', views.create_designer_user, name='designer_add'),
+    url(r'^designer_detail/(?P<pk>[0-9]+)/$', views.designer_detail, name='designer_detail'),
+    url(r'^designer_update/(?P<pk>[0-9]+)/$', DesignerUpdate.as_view(), name='designer_update'),
+    url(r'^designer_delete/(?P<pk>[0-9]+)/$', DesignerDelete.as_view(), name='designer_delete'),
+    url(r'^designer/collections/deliveries/$', views.designers_collections_d, name='designers_collections_d'),
+    url(r'^designer_collection_detail/(?P<pk>[0-9]+)/$', views.collection_detail, name='d_collection_detail'),
+    url(r'^designer_delivery_detail/(?P<pk>[0-9]+)/$', views.delivery_detail, name='d_delivery_detail'),
+    url(r'^designer/(?P<pk>[0-9]+)/collections/deliveries/$', views.collection_list_4D, name='collection_list_4D'),
+    url(r'^newStore/$', views.add_store, name='add_full_store'),
+    url(r'^store/add/$', StoreCreate.as_view(), name='store_add'),
+    url(r'^store_list/$', views.StoreList.as_view(), name='store_list'),
+    url(r'^store_detail/(?P<pk>[0-9]+)/$', views.store_detail, name='store_detail'),
+    url(r'^store_update/(?P<pk>[0-9]+)/$', StoreUpdate.as_view(), name='store_update'),
+    url(r'^store_delete/(?P<pk>[0-9]+)/$', StoreDelete.as_view(), name='store_delete'),
+    url(r'^store_contact_create/(?P<pk>[0-9]+)/$', views.Store_Contact_Create, name='store_contact_create'),
+    url(r'^contact_create/$', ContactCreate.as_view(), name='contact_create'),
+    url(r'^contact_update/(?P<pk>[0-9]+)/$', ContactUpdate.as_view(), name='contact_update'),
+    url(r'^contact_delete/(?P<pk>[0-9]+)/$', ContactDelete.as_view(), name='contact_delete'),
+    url(r'^address_create/$', AddressCreate.as_view(), name='address_create'),
+    url(r'^address_update/(?P<pk>[0-9]+)/$', AddressUpdate.as_view(), name='address_update'),
+    url(r'^address_delete/(?P<pk>[0-9]+)/$', AddressDelete.as_view(), name='address_delete'),
+    url(r'^payment_conditions_create/$', Payment_ConditionsCreate.as_view(), name='payment_condition_add'),
+    url(r'^payment_conditions_list/$', Payment_ConditionsList.as_view(), name='payment_condition_list'),
+    url(r'^payment_conditions_update/(?P<pk>[0-9]+)/$', Payment_ConditionsUpdate.as_view(), name='payment_conditions_update'),
+    url(r'^payment_conditions_delete/(?P<pk>[0-9]+)/$', Payment_ConditionsDelete.as_view(), name='payment_conditions_delete'),
+    url(r'^employee_user_create/$', views.create_employee_user, name='employee_user_create'),
+    url(r'^employee_list/$', EmployeeList.as_view(), name="employee_list"),
+    url(r'^employee_update/(?P<pk>[0-9]+)/$', views.update_employee_user , name="employee_update"),
+    url(r'^employee_delete/(?P<pk>[0-9]+)/$', EmployeeDelete.as_view(), name="employee_delete"),
+    # urls for pos
+    url(r'^po_populate/(?P<delivery_pk>[0-9]+)/(?P<po_pk>[0-9]+)/$', views.PO_formset_populate, name="po_populate"),
+    url(r'^new_pos/(?P<days>[0-9]+)/$', views.new_pos, name="new_pos"),
+    url(r'^new_pos/(?P<seller_pk>[0-9]+)/(?P<days>[0-9]+)/$', views.new_pos_seller, name="new_pos_seller"),
+    url(r'^new_pos/(?P<seller_pk>[0-9]+)/(?P<designer_pk>[0-9]+)/(?P<days>[0-9]+)/$', views.new_pos_seller_designer, name="new_pos_seller_designer"),
+    url(r'^po_detail/(?P<pk>[0-9]+)/$', views.po_detail, name="po_detail"),
+    url(r'^po_update/(?P<pk>[0-9]+)/$', PO_Update.as_view(), name="po_update"),
+    #PO Api
+    url(r'^po/choose_designer/$', DesignerList.as_view(), name='po_designer'),
+    url(r'^po/choose_collection/(?P<designer_pk>[0-9]+)/$', CollectionList_4D.as_view(), name='po_choose_collection'),
+    url(r'^po/choose_delivery/(?P<designer_pk>[0-9]+)/(?P<collection_pk>[0-9]+)/$', DeliveryList_4DC.as_view(), name='po_choose_delivery'),
+    #url(r'^po/choose_items/(?P<designer_pk>[0-9]+)/(?P<collection_pk>[0-9]+)/(?P<delivery_pk>[0-9]+)/$', .as_view(), name='po_choose_items'),
+]

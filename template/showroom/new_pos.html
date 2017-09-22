@@ -1,0 +1,16 @@
+{% extends "showroom/base_showroom.html" %}
+
+{% block Showroom %}
+</br>
+
+<h2> {{seller.username}} new POs:</h2>
+<ul class="BasicList">
+  {% for po in recent_pos %}
+    <li>
+      <a class="title-link" href="">{{ po }}</a></br>
+    </li>
+    </br>
+  {% endfor %}
+</ul>
+
+{% endblock %}

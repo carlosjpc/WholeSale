@@ -1,0 +1,22 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+<div class="row">
+  <div class="col-md-10">
+  </br>
+    <form method='GET' action=''>
+      <input type='text' name='q' placeholder="Search POs"/>
+      <input type="Submit" value="Search"/>
+    </form>
+    <h2>PO List:</h2>
+    <ul class="BasicList">
+      {% for po in pos_list %}
+        <li>
+          <a class="title-link" href="">{{ po }}</a>
+        </li>
+        </br>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "showroom/po_detail.html" %}
+{% block extraforms %}
+{% csrf_token %}
+  {{ form.as_p }}
+<p><input type="submit" value="Submit"></p>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "showroom/base_showroom.html" %}
+
+{% block Showroom %}
+</br></br>
+<h4>Designer: {{ collection.designer }}</h4>
+<h2>Collection: {{ collection }}{{ collection.year }}</h2>
+<h3>Name: {{ collection.name }}</h3>
+<h4>LookBook: {{ collection.lookbook }}</h4>
+<p>Description: {{ collection.description }}</p>
+<ul>
+  {% for delivery in deliveries %}
+    <li><a href="{% url 'd_delivery_detail' pk=delivery.pk %}">{{ delivery }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "showroom/base_showroom.html" %}
+
+{% block Showroom %}
+</br>
+
+<h2>Designer List:</h2>
+<ul class="BasicList">
+  {% for designer in designers %}
+    <li>
+      <a class="title-link" href="">{{ designer }}</a></br>
+      <a href="{% url 'designer_update' pk=designer.pk %}">Edit</a>
+      <a href="{% url 'designer_delete' pk=designer.pk %}">Delete</a>
+    </li>
+    </br>
+  {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+.txt-c{text-align: center;}
+.flt-r{float: right; margin-right: 20px;}
+.mg-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
+.main-nav{
+  display: block;
+  margin-top: 60px;
+  text-align: right;
+}
+.mn-a{
+  display:inline;
+}
+#p-announcement{
+  margin-bottom: -23px;
+}
+#fondo-designer {
+  background-image: url("http://siteground348.com/~quieroin/wp-content/uploads/2016/11/photo-129834-1.jpg");
+  min-height: 650px;
+}
+#login-form{
+  margin-top: 210px;
+}
+#login-btn{
+  margin-left: 170px;
+}
+.enfasis{
+  background: rgba(179, 179, 179, .8);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.add{
+  margin-left: 27px;
+  margin-right: 7px;
+}
+.BasicList{
+  list-style-type: none;
+}
+a{
+  color: #8B6900;
+}
+.title-link{
+  font-size: 20px;
+}
+.subtitle-link{
+  font-size: 18px;
+}
+.bd-lft{
+  margin-left: -27px;
+}
+.small-letters{
+  font-size: 12px;
+  color: gray;
+}
+.lineh-10{
+  line-height: 10px;
+}
+.qty-containers{
+  min-width: 80px;
+}

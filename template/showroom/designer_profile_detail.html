@@ -1,0 +1,11 @@
+{% extends "showroom/base_showroom.html" %}
+
+{% block Showroom %}
+</br></br></br>
+<div class="col-md-8 col-md-offset-1">
+  <h2>{{ designer }}</h2>
+  <p>Bio: {{ designer.bio }}</p>
+  <p>Created in: {{ designer.created_in }}</p>
+  <p>Style: {{ designer.style }}</p>
+</div>
+{% endblock %}

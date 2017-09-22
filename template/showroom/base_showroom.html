@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Whole Sale</title>
+<!-- Bootstrap 3 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- jquery-3 -->
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<!-- CSS file -->
+<link rel="stylesheet" href="/static/styles.css">
+{% block Head %}
+{% endblock %}
+</head>
+
+<body>
+<div class="container-fluid" id="outer-space">
+  <div class="row">
+    <div class="col-sm-4">
+      <h1>WHS</h1>
+      <p>your wholesale business in one place</p>
+    </div>
+    <div class="col-sm-3 col-sm-offset-4 main-nav">
+      <a href="{% url 'login' %}" class="mn-a">log in</a>
+      <p class="mn-a">|</p>
+      <a href="{% url 'logout' %}" class="mn-a">log out</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1" id="fondo-designer">
+      <div class="col-sm-9">
+        {% block Showroom %}
+        {% endblock %}
+      </div>
+      <div class="col-sm-3 enfasis">
+        <ul class="BasicList">
+          <h4>Navigate:</h4>
+          <li><a href="{% url 'ctrl_panel' %}" class="subtitle-link">General Panel</a></li>
+          <li><a class="subtitle-link">POs Panel</a></li>
+          <li><a href="{% url 'store_list' %}" class="subtitle-link">Store List</a></li>
+          <li><a href="{% url 'designers_collections_d' %}" class="subtitle-link">Designer List</a></li>
+          <li><a href="{% url 'employee_list' %}" class="subtitle-link">Employee List</a></li>
+          <li><a href="{% url 'payment_condition_list' %}">Payment Condition List</a></li>
+        </ul>
+        </br>
+        <ul class="BasicList">
+          <h4>Add:</h4>
+          <li>
+            <a class="subtitle-link" href="">new PO</a>
+            <p>excisting store and designer required</p>
+          </li>
+          <li>
+            <a class="subtitle-link" href="{% url 'add_full_store' %}">new store</a>
+            <p>with contact and address details</p>
+          </li>
+          <li>
+            <a class="subtitle-link" href="{% url 'store_add' %}">new simple store</a>
+            <p>no contact or address</p>
+          </li>
+          <li>
+            <a class="subtitle-link" href="{% url 'contact_create' %}">new contact</a>
+            <p>to an existing store</p>
+          </li>
+          <li>
+            <a class="subtitle-link" href="{% url 'address_create' %}">new address</a>
+            <p>to an existing store</p>
+          </li>
+          <li><a href="{% url 'payment_condition_add' %}">new payment condition</a><hr></li>
+          <li>
+            <a class="subtitle-link" href="{% url 'designer_add' %}">new designer</a>
+            <p>create a user for a </br>new designer</p>
+            <a class="subtitle-link" href="{% url 'employee_user_create' %}">new showroom employee</a>
+            <p>create a user for a </br>showroom employee</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block javascript %}
+{% endblock %}
+</body>
+</html>

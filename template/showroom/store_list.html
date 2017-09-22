@@ -1,0 +1,18 @@
+{% extends "showroom/base_showroom.html" %}
+
+{% block Showroom %}
+</br>
+
+<h2>Store List:</h2>
+<ul class="BasicList">
+  {% for store in all_stores %}
+    <li>
+      <a class="title-link" href="{% url 'store_detail' pk=store.pk %}">{{ store.Store_Name }}</a></br>
+      <a href="{% url 'store_update' pk=store.pk %}">Edit</a>
+      <a href="{% url 'store_delete' pk=store.pk %}">Delete</a>
+    </li>
+    </br>
+  {% endfor %}
+</ul>
+
+{% endblock %}

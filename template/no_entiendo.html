@@ -1,0 +1,15 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+{{ Msg }}
+<p>Item: {{ base }}</p>
+{% for color in colors %}
+  <p>Print: {{ color.color_or_print }}</p>
+{% endfor %}
+{% for material in materials %}
+  <p>Material: {{ material.name }}</p>
+{% endfor %}
+{% for size_group in size_groups %}
+  <p>Size group: {{ size_group.group_name }}</p>
+{% endfor %}
+{% endblock %}

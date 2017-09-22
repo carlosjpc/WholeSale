@@ -1,0 +1,20 @@
+{% extends "Disenador/base_designer.html" %}
+
+{% block workarea %}
+<div class="row">
+  <div class="col-md-10">
+    <h2>Delivery List:</h2>
+    <ul class="BasicList">
+      {% for delivery in deliveries %}
+        <li>
+          <a href="">From collection: {{ delivery.collection }}</a></br>
+          <a class="title-link" href="{% url 'delivery_detail' pk=delivery.pk %}"># {{ delivery.number }} Shipping date: {{ delivery.shipping_date }}</a></br>
+          <a href="{% url 'delivery_update' pk=delivery.pk %}">Edit</a>
+          <a href="{% url 'delivery_delete' pk=delivery.pk %}">Delete</a>
+        </li>
+        </br>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
