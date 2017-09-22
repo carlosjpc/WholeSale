@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'wj4#7*j*s1yor+_+wl1rrh2_*xm1%$&vjv947$f7eepz%16_l#'
+SECRET_KEY = 'wj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -62,7 +62,7 @@ ROOT_URLCONF = 'WholeSale.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['/Users/carlospceballos/dropbox/django/projectos/WholeSale/template',],
+        'DIRS': ['/../WholeSale/template',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
